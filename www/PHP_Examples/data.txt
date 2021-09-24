@@ -1,0 +1,4 @@
+apples are red.
+bananas are yellow.
+carrots are orange.
+grapes are green or purple or black or red.

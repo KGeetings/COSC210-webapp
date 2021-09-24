@@ -1,0 +1,10 @@
+Working with large blocks of text in a file opens up a whole new range of
+possibilities for interesting programs. The following program solves Jumble
+puzzles, which ask the solver to figure out an unknown word given a scrambled
+set of its letters.
+
+One of the difficulties in solving this problem is that long words have so many
+different reorderings, called permutations. The strategy employed here is to
+create a unique signature for each word, so that a word has the same signature
+as all of its permutations. This program also finds anagrams, since typing
+an unscrambled word will find all of it anagrams.

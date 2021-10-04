@@ -6,5 +6,6 @@
 		echo $text;
 		$text = fgets($file_handle);
 		}
+	echo "The last line is--> $text\n";
 	fclose($file_handle);	
 ?>

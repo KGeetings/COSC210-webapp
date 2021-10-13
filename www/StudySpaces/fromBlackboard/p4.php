@@ -1,7 +1,7 @@
 <?php
-$hostname = "localhost";
+$hostname = "db";
 $username = "root";
-$password = "cosc210";
+$password = "password";
 $database = "StudySpaces";
 $connect = new mysqli($hostname, $username, $password, $database); 
 if ($connect -> connect_error) die ($connect -> connect_error);
@@ -26,5 +26,6 @@ $insert = sprintf("insert into locations (buildingid, description) " .
 	"values('%d','%s')", $bid, "Outside - Northside of building");
 $result = $connect->query($insert);
 if (!$result) die ($connect->error);
-
+$newid = $connect->insert_id;
+echo "The id of the newly inserted location is $newid\n";
 ?>

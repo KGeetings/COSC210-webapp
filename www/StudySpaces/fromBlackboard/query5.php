@@ -1,12 +1,11 @@
 <?php
 $tableList = array();
-
-$hostname = "localhost";
-$username = "root";
-$password = "cosc210";
-$database = "computer";
-$connect = new mysqli($hostname, $username, $password, $database); 
-if ($connect -> connect_error) die ($connect -> connect_error);
+	$hostname = 'db'; // normally it will be 'localhost' but docker has the container db
+	$database = 'computer';
+	$username = 'root';
+	$password = 'password';
+	$connect = new mysqli($hostname, $username, $password, $database);
+	if ($connect->connect_error) die ($connect->connect_error);
 
 $query = "select table_name from information_schema.tables ".
 	"where table_schema = 'computer' ".

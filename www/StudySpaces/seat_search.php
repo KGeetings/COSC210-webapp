@@ -2,6 +2,12 @@
 <html>
 <head>
 <title>Form to find study seating on campus</title>
+<!-- Style that turns label and h1 to the color red -->
+<style>
+	label, h1 {
+  		color: red;
+	}
+</style>
 </head>
 <body>
 <h1>Study Spaces</h1>

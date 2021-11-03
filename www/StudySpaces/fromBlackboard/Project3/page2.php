@@ -18,11 +18,11 @@ $password = "password";
 $database = "StudySpaces";
 $connect = new mysqli($hostname, $username, $password, $database); 
 if ($connect -> connect_error) die ($connect -> connect_error);
-if(isset($_POST['lresources'])){
-
-// location description form
+if(isset($_POST['submit'])){
+// Study Spaces info
 	$ld = $_POST["locdesc"];
     $id = $_POST['buildingid'];
+    $lresources = $_POST['lresource'];
 	print <<<LOC
 <!-- top section -->
 <div class="section header">
@@ -53,6 +53,7 @@ if(isset($_POST['lresources'])){
 		<input class="button" type="reset">
 		<input type="button" name="buildingid" value="$id">
         <input type="button" name="locationddesc" value="$ld">
+        <input type="button" name="lresources" value="$lresources">
 	</div
      </div>
   </div>
@@ -62,6 +63,14 @@ LOC;
 else {
     $ld = $_POST["locdesc"];
     $id = $_POST['buildingid'];
+
+    //insert location description into the database
+    $insert = sprintf("insert into locations (buildingid, description) " . 
+	    "values('%d','%s')", $id, $ld);
+    $result = $connect->query($insert);
+    if (!$result) die ($connect->error);
+    $locid = $connect->insert_id;
+
 // choose location resources form
 	echo <<<HTML
 <!-- top section -->
@@ -85,18 +94,16 @@ else {
 	<div class="nine columns">
 
 HTML;
-	$query = "select id, name from buildings";
-	$result = $connect->query($query);
-	if (!$result) die ($connect->error);
-	$rows = $result->num_rows;
-	print "<select name='lresources'>\n";
-
-	for ($r = 0; $r < $rows; ++$r){
+    $query = "select id, description from resources";
+    $result = $connect->query($query);
+    if (!$result) die ($connect->error);
+    $rows = $result->num_rows;
+    for ($r = 0; $r < $rows; ++$r){
 		$result->data_seek($r);
 		$columns = $result->fetch_array(MYSQLI_NUM);
-		print "<option value='$columns[0]'>$columns[1]</option>\n";
+		print "<input type='checkbox' name='lresource_list[]' value='$columns[0]'><label>$columns[1]</label><br>\n";
 		}
-	print "</select><br>\n";
+	print "<br>\n";
 	print <<<HTML
 	</div>
     <div class="row">
@@ -125,7 +132,7 @@ HTML;
   </div>
 </div>
 HTML;
-} // else building id
+}
 ?>
 </body>
 </html>

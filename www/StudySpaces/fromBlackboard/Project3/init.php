@@ -55,7 +55,7 @@ if(isset($_POST['buildingid'])){
      </div>
   </div>
 </div>	
-LOC;	
+LOC;
 }
 else {
 // choose building form

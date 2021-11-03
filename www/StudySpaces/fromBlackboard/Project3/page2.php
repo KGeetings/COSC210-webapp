@@ -60,6 +60,8 @@ if(isset($_POST['lresources'])){
 LOC;	
 }
 else {
+    $ld = $_POST["locdesc"];
+    $id = $_POST['id'];
 // choose location resources form
 	echo <<<HTML
 <!-- top section -->

@@ -22,7 +22,7 @@ if(isset($_POST['lresources'])){
 
 // location description form
 	$ld = $_POST["locdesc"];
-    $id = $_POST['id'];
+    $id = $_POST['buildingid'];
 	print <<<LOC
 <!-- top section -->
 <div class="section header">
@@ -61,7 +61,7 @@ LOC;
 }
 else {
     $ld = $_POST["locdesc"];
-    $id = $_POST['buidlingid'];
+    $id = $_POST['buildingid'];
 // choose location resources form
 	echo <<<HTML
 <!-- top section -->

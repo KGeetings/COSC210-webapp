@@ -93,7 +93,7 @@ HTML;
 		print "<option value='$columns[0]'>$columns[1]</option>\n";
 		}
 	print "</select><br>\n";
-	print <<<HTML2
+	print <<<HTML
 	</div>
     <div class="row">
  		&nbsp;
@@ -115,7 +115,7 @@ HTML;
    </div>
   </div>
 </div>
-HTML2;
+HTML;
 } // else building id
 ?>
 </body>

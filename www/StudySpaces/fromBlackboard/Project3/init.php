@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Project 3 - Form to add a location</title>
+<title>Project 3 - Form to add a location description</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/normalize.css">
@@ -42,7 +42,7 @@ if(isset($_POST['buildingid'])){
 		<label>What is the location description?</label>
 	</div>
 	<div class="nine columns">
-		<textarea name="description" rows="3" cols="40">Description goes here
+		<textarea name="locdesc" rows="3" cols="40">Description goes here
 		</textarea><br>
 	</div>
     </div>

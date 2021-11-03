@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Project 3 - Form to add a location</title>
+<title>Project 3 - Form to add study spaces info</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="css/normalize.css">
@@ -18,10 +18,11 @@ $password = "password";
 $database = "StudySpaces";
 $connect = new mysqli($hostname, $username, $password, $database); 
 if ($connect -> connect_error) die ($connect -> connect_error);
-if(isset($_POST['buildingid'])){
+if(isset($_POST['lresources'])){
 
 // location description form
-	$id = $_POST["buildingid"];
+	$ld = $_POST["locdesc"];
+    $id = $_POST['id'];
 	print <<<LOC
 <!-- top section -->
 <div class="section header">
@@ -50,7 +51,8 @@ if(isset($_POST['buildingid'])){
 	<div class="six columns">
 		<input class="button button-primary" type="submit"><br>
 		<input class="button" type="reset">
-		<input type="hidden" name="buildingid" value="$id">
+		<input type="button" name="buildingid" value="$id">
+        <input type="button" name="locationddesc" value="$ld">
 	</div
      </div>
   </div>
@@ -58,14 +60,14 @@ if(isset($_POST['buildingid'])){
 LOC;	
 }
 else {
-// choose building form
+// choose location resources form
 	echo <<<HTML
 <!-- top section -->
 <div class="section header">
   <div class="container">
     <div class="row">
       <div class="ten columns">
-        <p class="logo">Form to get a building locations</p>
+        <p class="logo">Form to get location resources</p>
       </div>
      </div>
   </div>
@@ -76,7 +78,7 @@ else {
     <div class="row">
 	<form method='POST' action=''>
       	<div class="three columns">
-		<label>Enter building name</label>
+		<label>Choose location resources from the list</label>
 	</div>
 	<div class="nine columns">
 
@@ -85,7 +87,7 @@ HTML;
 	$result = $connect->query($query);
 	if (!$result) die ($connect->error);
 	$rows = $result->num_rows;
-	print "<select name='buildingid'>\n";
+	print "<select name='lresources'>\n";
 
 	for ($r = 0; $r < $rows; ++$r){
 		$result->data_seek($r);
@@ -110,6 +112,11 @@ HTML;
    <div class="row">
 	<div class="two columns">
 		<input class="button" type="reset">
+	</div>
+    <div class="row">
+	<div class="two columns">
+		<input type="button" name="buildingid" value="$id">
+        <input type="button" name="locationddesc" value="$ld">
 	</div>
 	</form>
    </div>

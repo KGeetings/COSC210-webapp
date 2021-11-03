@@ -61,7 +61,7 @@ LOC;
 }
 else {
     $ld = $_POST["locdesc"];
-    $id = $_POST['id'];
+    $id = $_POST['buidlingid'];
 // choose location resources form
 	echo <<<HTML
 <!-- top section -->

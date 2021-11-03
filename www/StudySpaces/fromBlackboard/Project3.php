@@ -44,15 +44,15 @@ if(isset($_POST['buildingid'])){
 					</div>
 					<div class="nine columns">
 				HTML;
-			} else {
-				// choose building form
+			} else { // else Study Spaces info
+				// choose study Spaces info form
 				echo <<<HTML
 				<!-- top section -->
 				<div class="section header">
 				<div class="container">
 					<div class="row">
 					<div class="ten columns">
-						<p class="logo">Form to get a building locations</p>
+						<p class="logo">Form to get a Study info TESTHOLDER</p>
 					</div>
 					</div>
 				</div>
@@ -103,10 +103,173 @@ if(isset($_POST['buildingid'])){
 				</div>
 				</div>
 				HTML;
-				} // else Study Spaces info
+				}
+			// End thank you
+			echo <<<HTML
+			<!-- top section -->
+			<div class="section header">
+			<div class="container">
+				<div class="row">
+				<div class="ten columns">
+					<p class="logo">Thanks for submitting</p>
+				</div>
+				</div>
+			</div>
+			</div>
+			<!-- info section -->
+			<div class="section header">
+			<div class="container">
+				<div class="row">
+				<form method='POST' action=''>
+					<div class="three columns">
+					<label>You can go back and submit more if you want</label>
+				</div>
+				<div class="nine columns">
+			HTML;
+		} else { // else Study Spaces info
+			// choose study Spaces info form
+			echo <<<HTML
+			<!-- top section -->
+			<div class="section header">
+			<div class="container">
+				<div class="row">
+				<div class="ten columns">
+					<p class="logo">Form to get a Study info TESTHOLDER</p>
+				</div>
+				</div>
+			</div>
+			</div>
+			<!-- info section -->
+			<div class="section header">
+			<div class="container">
+				<div class="row">
+				<form method='POST' action=''>
+					<div class="three columns">
+					<label>Enter building name</label>
+				</div>
+				<div class="nine columns">
+			
+			HTML;
+				$query = "select id, name from buildings";
+				$result = $connect->query($query);
+				if (!$result) die ($connect->error);
+				$rows = $result->num_rows;
+				print "<select name='buildingid'>\n";
+			
+				for ($r = 0; $r < $rows; ++$r){
+					$result->data_seek($r);
+					$columns = $result->fetch_array(MYSQLI_NUM);
+					print "<option value='$columns[0]'>$columns[1]</option>\n";
+					}
+				print "</select><br>\n";
+				print <<<HTML
+				</div>
+				<div class="row">
+					&nbsp;
+			
+				</div>
+				<div class="row">
+				<div class="two columns">
+					<input class="button button-primary" type="submit"><br>
+				</div>
+				</div>
+			<div class="row">
+				&nbsp;
+			</div>
+			<div class="row">
+				<div class="two columns">
+					<input class="button" type="reset">
+				</div>
+				</form>
+			</div>
+			</div>
+			</div>
+			HTML;
 			}
-		}
-// location description form
+		
+	// End thank you
+	echo <<<HTML
+	<!-- top section -->
+	<div class="section header">
+	<div class="container">
+		<div class="row">
+		<div class="ten columns">
+			<p class="logo">Thanks for submitting</p>
+		</div>
+		</div>
+	</div>
+	</div>
+	<!-- info section -->
+	<div class="section header">
+	<div class="container">
+		<div class="row">
+		<form method='POST' action=''>
+			<div class="three columns">
+			<label>You can go back and submit more if you want</label>
+		</div>
+		<div class="nine columns">
+	HTML;
+	} else { // else Study Spaces info
+		// choose study Spaces info form
+		echo <<<HTML
+		<!-- top section -->
+		<div class="section header">
+		<div class="container">
+			<div class="row">
+			<div class="ten columns">
+				<p class="logo">You've completed the locDesc TESTHOLDER</p>
+			</div>
+			</div>
+		</div>
+		</div>
+		<!-- info section -->
+		<div class="section header">
+		<div class="container">
+			<div class="row">
+			<form method='POST' action=''>
+				<div class="three columns">
+				<label>Enter building name</label>
+			</div>
+			<div class="nine columns">
+		
+		HTML;
+			$query = "select id, name from buildings";
+			$result = $connect->query($query);
+			if (!$result) die ($connect->error);
+			$rows = $result->num_rows;
+			print "<select name='buildingid'>\n";
+		
+			for ($r = 0; $r < $rows; ++$r){
+				$result->data_seek($r);
+				$columns = $result->fetch_array(MYSQLI_NUM);
+				print "<option value='$columns[0]'>$columns[1]</option>\n";
+				}
+			print "</select><br>\n";
+			print <<<HTML
+			</div>
+			<div class="row">
+				&nbsp;
+		
+			</div>
+			<div class="row">
+			<div class="two columns">
+				<input class="button button-primary" type="submit"><br>
+			</div>
+			</div>
+		<div class="row">
+			&nbsp;
+		</div>
+		<div class="row">
+			<div class="two columns">
+				<input class="button" type="reset">
+			</div>
+			</form>
+		</div>
+		</div>
+		</div>
+		HTML;
+	}
+// If building, then serve location description form
 	$buildid = $_POST["buildingid"];
 	print <<<HTML
 <!-- top section -->
@@ -128,7 +291,7 @@ if(isset($_POST['buildingid'])){
 		<label>What is the location description?</label>
 	</div>
 	<div class="nine columns">
-		<textarea name="description" rows="3" cols="40">Description goes here
+		<textarea name="locdesc" rows="3" cols="40">Description goes here
 		</textarea><br>
 	</div>
     </div>
@@ -144,7 +307,7 @@ if(isset($_POST['buildingid'])){
 HTML;	
 }
 else {
-// choose building form
+// If no building, then choose building form
 	echo <<<HTML
 <!-- top section -->
 <div class="section header">

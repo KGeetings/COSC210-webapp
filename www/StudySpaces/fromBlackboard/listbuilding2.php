@@ -6,9 +6,9 @@
 <body>
 <h1>Form to get a building name</h1>
 <?php
-$hostname = "localhost";
+$hostname = "db";
 $username = "root";
-$password = "cosc210";
+$password = "password";
 $database = "StudySpaces";
 $connect = new mysqli($hostname, $username, $password, $database); 
 if ($connect -> connect_error) die ($connect -> connect_error);

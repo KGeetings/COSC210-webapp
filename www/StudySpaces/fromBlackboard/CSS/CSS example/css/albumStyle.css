@@ -1,0 +1,35 @@
+.track {
+font-family: 'comic sans ms', arial, sans-serif;
+
+}
+.album {
+text-indent:2em;
+}
+.quote {
+text-align:justify;
+}
+.faves{
+}
+#groupname {
+text-shadow: .2em .2em silver;
+color:green;
+}
+hgroup {
+text-align:center;
+color:#00AA00;
+}
+blockquote {
+border: 1px solid;
+padding: 10px;
+color:ivory;
+background-color:#009900;
+}
+.album:first-letter{
+text-shadow: .2em .2em silver;
+color:green;
+font-size:300%;
+}
+.album{
+text-shadow: .2em .2em silver;
+color:green;
+}

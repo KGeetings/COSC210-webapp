@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Display the Locations in a building</title>
+</head>
+<body>
+<h1>Form to get a building name</h1>
 <?php
 $hostname = "db";
 $username = "root";
@@ -5,6 +12,12 @@ $password = "password";
 $database = "StudySpaces";
 $connect = new mysqli($hostname, $username, $password, $database); 
 if ($connect -> connect_error) die ($connect -> connect_error);
+
+if (isset($_POST['building'])) {
+    $building = $_POST['building'];
+}
+else {
+
 print "Which building is to have a new location?\n";
 $name = array();
 $query = "select id, name from buildings";
@@ -76,3 +89,5 @@ print "Thank you for entering this data!\n";
 
 
 ?>
+</body>
+</html>

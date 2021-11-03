@@ -112,7 +112,7 @@ HTML;
     </div>
     <div class="row">
 	<div class="two columns">
-		<input class="button button-primary" type="submit"><br>
+		<input class="button button-primary" type="submit" name='submit' value="Send"><br>
 	</div>
     </div>
    <div class="row">

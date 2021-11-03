@@ -106,10 +106,9 @@ if(isset($_POST['buildingid'])){
 				} // else Study Spaces info
 			}
 		}
-	}
 // location description form
 	$buildid = $_POST["buildingid"];
-	print <<<LOC
+	print <<<HTML
 <!-- top section -->
 <div class="section header">
   <div class="container">
@@ -139,10 +138,10 @@ if(isset($_POST['buildingid'])){
 		<input class="button" type="reset">
 		<input type="hidden" name="buildingid" value="$buildid">
 	</div
-     </div>
+	</div>
   </div>
 </div>	
-LOC;	
+HTML;	
 }
 else {
 // choose building form

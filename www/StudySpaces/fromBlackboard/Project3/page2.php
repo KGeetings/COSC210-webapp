@@ -23,7 +23,6 @@ if(isset($_POST['submit'])){
     $id = $_POST['buildingid'];
     $locid = $_POST['locationid'];
     $lresources = $_POST['lresource_list'];
-    print_r($lresources);
     if(!empty($_POST['lresource_list'])){
         foreach($_POST['lresource_list'] as $lresource){
             $query = sprintf("insert into loc_res " .
@@ -116,9 +115,6 @@ if(isset($_POST['submit'])){
 	<div class="six columns">
 		<input class="button button-primary" type="submit"><br>
 		<input class="button" type="reset">
-		<input type="button" name="buildingid" value="$id">
-        <input type="button" name="locationddesc" value="$ld">
-        <input type="button" name="locationid" value="$locid">
         <input type="hidden" name="buildingid" value="$id">
         <input type="hidden" name="locationdesc" value="$ld">
         <input type="hidden" name="locationid" value="$locid">
@@ -192,9 +188,6 @@ HTML;
 	</div>
     <div class="row">
 	<div class="two columns">
-		<input type="button" name="buildingid" value="$id">
-        <input type="button" name="locationdesc" value="$ld">
-        <input type="button" name="locationid" value="$locid">
         <input type="hidden" name="buildingid" value="$id">
         <input type="hidden" name="locationdesc" value="$ld">
         <input type="hidden" name="locationid" value="$locid">

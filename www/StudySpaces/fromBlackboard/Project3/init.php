@@ -51,7 +51,6 @@ if(isset($_POST['buildingid'])){
 		<input class="button button-primary" type="submit"><br>
 		<input class="button" type="reset">
 		<input type="hidden" name="buildingid" value="$id">
-        <input type="button" name="buildingid" value="$id">
 	</div
      </div>
   </div>

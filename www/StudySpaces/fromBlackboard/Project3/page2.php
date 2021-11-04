@@ -56,7 +56,7 @@ if(isset($_POST['submit'])){
   <div class="container">
     <div class="row">
       <div class="ten columns">
-        <p class="logo">Form to provide add study spaces info</p>
+        <p class="logo">Form to add study spaces info</p>
       </div>
      </div>
   </div>
@@ -65,15 +65,69 @@ if(isset($_POST['submit'])){
 <div class="section header">
   <div class="container">
     <div class="row">
-	<form method='POST' action=''>
+	<form method='POST' action='page3.php'>
       	<div class="three columns">
 		<label>Please complete the following.</label>
-	</div>
-	<div class="nine columns">
-		<textarea name="description" rows="3" cols="40">Description goes here
-		</textarea><br>
-	</div>
+	    </div>
+	<div class="rendered-form">
+    <div class="formbuilder-number form-group field-seats">
+        <label for="seats" class="formbuilder-number-label">How many seats are available?
+            <br>
+        </label>
+        <input type="number" class="form-control" name="seats" access="false" id="seats">
     </div>
+    <div class="formbuilder-number form-group field-computers">
+        <label for="computers" class="formbuilder-number-label">How many computers are available?
+            <br>
+        </label>
+        <input type="number" class="form-control" name="computers" access="false" id="computers">
+    </div>
+    <div class="formbuilder-textarea form-group field-food">
+        <label for="food" class="formbuilder-textarea-label">Please describe the food availability, if any.
+            <br>
+        </label>
+        <textarea type="textarea" class="form-control" name="food" access="false" id="food"></textarea>
+    </div>
+    <div class="formbuilder-select form-group field-noise">
+        <label for="noise" class="formbuilder-select-label">From 1 (quiet) to 10 (very loud), please rate the noise level:
+            <br>
+        </label>
+        <select class="form-control" name="noise" id="noise">
+            <option value="1" selected="true" id="noise-0">1</option>
+            <option value="2" id="noise-1">2</option>
+            <option value="3" id="noise-2">3</option>
+            <option value="4" id="noise-3">4</option>
+            <option value="5" id="noise-4">5</option>
+            <option value="6" id="noise-5">6</option>
+            <option value="7" id="noise-6">7</option>
+            <option value="8" id="noise-7">8</option>
+            <option value="9" id="noise-8">9</option>
+            <option value="10" id="noise-9">10</option>
+        </select>
+    </div>
+    <div class="formbuilder-text form-group field-lighting">
+        <label for="lighting" class="formbuilder-text-label">Please describe the lighting in this location. Natural, Artificial, other</label>
+        <input type="text" class="form-control" name="lighting" access="false" id="lighting">
+    </div>
+    <div class="formbuilder-select form-group field-studyplace">
+        <label for="studyplace" class="formbuilder-select-label">From 1 (bad) to 10 (great), please rate this a place to study:
+            <br>
+        </label>
+        <select class="form-control" name="studyplace" id="studyplace">
+            <option value="1" selected="true" id="studyplace-0">1</option>
+            <option value="2" id="studyplace-1">2</option>
+            <option value="3" id="studyplace-2">3</option>
+            <option value="4" id="studyplace-3">4</option>
+            <option value="5" id="studyplace-4">5</option>
+            <option value="6" id="studyplace-5">6</option>
+            <option value="7" id="studyplace-6">7</option>
+            <option value="8" id="studyplace-7">8</option>
+            <option value="9" id="studyplace-8">9</option>
+            <option value="10" id="studyplace-9">10</option>
+        </select>
+    </div>
+    </div>
+
     <div class="row">
 	<div class="six columns">
 		<input class="button button-primary" type="submit"><br>
@@ -83,7 +137,7 @@ if(isset($_POST['submit'])){
         <input type="hidden" name="buildingid" value="$id">
         <input type="hidden" name="locationdesc" value="$ld">
 	</div
-     </div>
+    </div>
   </div>
 </div>	
 LOC;	

@@ -21,9 +21,9 @@ if ($connect -> connect_error) die ($connect -> connect_error);
 if(isset($_POST['submit'])){
     $ld = $_POST["locationdesc"];
     $id = $_POST['buildingid'];
+    $locid = $_POST['locationid'];
     $lresources = $_POST['lresource_list'];
     print_r($lresources);
-    $locid = $connect->insert_id;
     if(!empty($_POST['lresource_list'])){
         foreach($_POST['lresource_list'] as $lresource){
             $query = sprintf("insert into loc_res " .
@@ -192,8 +192,10 @@ HTML;
 	<div class="two columns">
 		<input type="button" name="buildingid" value="$id">
         <input type="button" name="locationdesc" value="$ld">
+        <input type="button" name="locationid" value="$locid">
         <input type="hidden" name="buildingid" value="$id">
         <input type="hidden" name="locationdesc" value="$ld">
+        <input type="hidden" name="locationid" value="$locid">
 	</div>
 	</form>
    </div>

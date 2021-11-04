@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
     $ld = $_POST["locationdesc"];
     $id = $_POST['buildingid'];
     $lresources = $_POST['lresource_list'];
-    print "$lresources";
+    print_r($lresources);
     // insert resources into loc_res table
     /* $query = "select id, description from resources";
     $result = $connect->query($query);

@@ -20,10 +20,9 @@ $connect = new mysqli($hostname, $username, $password, $database);
 if ($connect -> connect_error) die ($connect -> connect_error);
 if(isset($_POST['submit'])){
 // Study Spaces info
-	//$ld = $_POST["locdesc"];
-    print "$ld";
-    //$id = $_POST['buildingid'];
-    //$lresources = $_POST['lresource'];
+	$ld = $_POST["locationdesc"];
+    $id = $_POST['buildingid'];
+    $lresources = $_POST['lresource_list'];
 	print <<<LOC
 <!-- top section -->
 <div class="section header">
@@ -126,7 +125,7 @@ HTML;
     <div class="row">
 	<div class="two columns">
 		<input type="button" name="buildingid" value="$id">
-        <input type="button" name="locationddesc" value="$ld">
+        <input type="button" name="locationdesc" value="$ld">
 	</div>
 	</form>
    </div>

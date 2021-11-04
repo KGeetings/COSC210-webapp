@@ -118,8 +118,10 @@ if(isset($_POST['submit'])){
 		<input class="button" type="reset">
 		<input type="button" name="buildingid" value="$id">
         <input type="button" name="locationddesc" value="$ld">
+        <input type="button" name="locationid" value="$locid">
         <input type="hidden" name="buildingid" value="$id">
         <input type="hidden" name="locationdesc" value="$ld">
+        <input type="hidden" name="locationid" value="$locid">
 	</div
     </div>
   </div>

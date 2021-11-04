@@ -23,6 +23,15 @@ if(isset($_POST['submit'])){
     $id = $_POST['buildingid'];
     $lresources = $_POST['lresource_list'];
     print_r($lresources);
+    if(!empty($_POST[lresource_list])){
+        foreach($_POST[lresource_list] as $lresource){
+            //$query = "INSERT INTO loc_res (locationdesc, buildingid, lresourceid) VALUES ('$ld', '$id', '$lresource')";
+            $query = sprintf("insert into loc_res " .
+                "values('%d','%d','%d')", $ld, $id, $lresource);
+            $result = $connect -> query($query);
+            if (!$result) die ($connect -> error);
+        }
+    }
     // insert resources into loc_res table
     /* $query = "select id, description from resources";
     $result = $connect->query($query);

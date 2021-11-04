@@ -19,17 +19,35 @@ $database = "StudySpaces";
 $connect = new mysqli($hostname, $username, $password, $database); 
 if ($connect -> connect_error) die ($connect -> connect_error);
 if(isset($_POST['submit'])){
-// Study Spaces info
-	$ld = $_POST["locationdesc"];
+    $ld = $_POST["locationdesc"];
     $id = $_POST['buildingid'];
     $lresources = $_POST['lresource_list'];
+    print "$lresources";
+    // insert resources into loc_res table
+    /* $query = "select id, description from resources";
+    $result = $connect->query($query);
+    if (!$result) die ($connect->error);
+    $rows = $result->num_rows;
+    for ($r = 0; $r < $rows; ++$r){
+        $result->data_seek($r);
+        $columns = $result->fetch_array(MYSQLI_NUM);
+        $res_id = $columns[0];
+        if (strcmp($reply,"Y") == 0) {
+                $insert = sprintf("insert into loc_res " . 
+            "values('%d','%d','%d')", $locid, $res_id, $id );
+            $res = $connect->query($insert);
+            if (!$res) die ($connect->error);
+            }	
+        } */
+
+// Study Spaces info
 	print <<<LOC
 <!-- top section -->
 <div class="section header">
   <div class="container">
     <div class="row">
       <div class="ten columns">
-        <p class="logo">Form to provide the location description</p>
+        <p class="logo">Form to provide add study spaces info</p>
       </div>
      </div>
   </div>
@@ -40,7 +58,7 @@ if(isset($_POST['submit'])){
     <div class="row">
 	<form method='POST' action=''>
       	<div class="three columns">
-		<label>What is the location description?</label>
+		<label>Please complete the following.</label>
 	</div>
 	<div class="nine columns">
 		<textarea name="description" rows="3" cols="40">Description goes here
@@ -53,10 +71,8 @@ if(isset($_POST['submit'])){
 		<input class="button" type="reset">
 		<input type="button" name="buildingid" value="$id">
         <input type="button" name="locationddesc" value="$ld">
-        <input type="button" name="lres" value="$lresources">
         <input type="hidden" name="buildingid" value="$id">
         <input type="hidden" name="locationdesc" value="$ld">
-        <input type="hidden" name="lres" value="$lresources">
 	</div
      </div>
   </div>

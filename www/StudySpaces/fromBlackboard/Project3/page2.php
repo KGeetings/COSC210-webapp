@@ -23,31 +23,15 @@ if(isset($_POST['submit'])){
     $id = $_POST['buildingid'];
     $lresources = $_POST['lresource_list'];
     print_r($lresources);
-    if(!empty($_POST[lresource_list])){
-        foreach($_POST[lresource_list] as $lresource){
-            //$query = "INSERT INTO loc_res (locationdesc, buildingid, lresourceid) VALUES ('$ld', '$id', '$lresource')";
+    $locid = $connect->insert_id;
+    if(!empty($_POST['lresource_list'])){
+        foreach($_POST['lresource_list'] as $lresource){
             $query = sprintf("insert into loc_res " .
-                "values('%d','%d','%d')", $ld, $id, $lresource);
+                "values('%d','%d','%d')", $locid, $lresource, $id);
             $result = $connect -> query($query);
             if (!$result) die ($connect -> error);
         }
     }
-    // insert resources into loc_res table
-    /* $query = "select id, description from resources";
-    $result = $connect->query($query);
-    if (!$result) die ($connect->error);
-    $rows = $result->num_rows;
-    for ($r = 0; $r < $rows; ++$r){
-        $result->data_seek($r);
-        $columns = $result->fetch_array(MYSQLI_NUM);
-        $res_id = $columns[0];
-        if (strcmp($reply,"Y") == 0) {
-                $insert = sprintf("insert into loc_res " . 
-            "values('%d','%d','%d')", $locid, $res_id, $id );
-            $res = $connect->query($insert);
-            if (!$res) die ($connect->error);
-            }	
-        } */
 
 // Study Spaces info
 	print <<<LOC

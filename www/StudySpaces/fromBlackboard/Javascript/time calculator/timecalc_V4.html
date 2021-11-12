@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Time Calculator</title>
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/timecalc.css" rel="stylesheet">
+<script>
+function onClickButton(num){
+    var hours = document.getElementById("modifyHours").value;
+    var minutes = document.getElementById("modifyMinutes").value;
+    if(document.getElementById("modifyHours").focused){
+        document.getElementById("modifyHours").value=hours*10 + num;
+    }
+    else if(document.getElementById("modifyMinutes").focused){
+        document.getElementById("modifyMinutes").value=minutes * 10 + num;
+    }
+    else{
+        // do nothing
+    }
+}
+
+function onFocusInput(object){
+    document.getElementById("modifyHours").focused=false;
+    document.getElementById("modifyMinutes").focused=false;
+    object.focused = true;
+}
+
+
+function onAddButton() {
+	var dminutes = Number(document.getElementById("displayMinutes").value);
+	var mminutes = Number(document.getElementById("modifyMinutes").value);
+	var carryhours = Math.floor((dminutes + mminutes)/60);
+	var remainminutes = (dminutes + mminutes) % 60;
+	document.getElementById("displayMinutes").value = remainminutes;
+	var dhours = Number(document.getElementById("displayHours").value);
+	var mhours = Number(document.getElementById("modifyHours").value);
+	document.getElementById("displayHours").value = dhours + mhours + carryhours;	}
+
+function onSubtractButton() {
+	var dhours = Number(document.getElementById("displayHours").value);
+	var mhours = Number(document.getElementById("modifyHours").value);
+	var diffhours = dhours - mhours;
+	var dminutes = Number(document.getElementById("displayMinutes").value);
+	var mminutes = Number(document.getElementById("modifyMinutes").value);
+	var diffminutes = dminutes - mminutes;
+	if (diffminutes <0){
+		diffminutes += 60;
+		diffhours--;
+		}		
+	document.getElementById("displayHours").value = diffhours;
+	document.getElementById("displayMinutes").value = diffminutes;
+	}
+</script>
+</head>
+
+<body>
+<p>Time Calculator</p>
+<form action="" method="" name="">
+<fieldset>
+<legend id="display">Display</legend>
+
+<label for="dHours">Hours</label>
+<input name="dHours" id="displayHours" type="text" size=10 value=0 />
+<label for="dMinutes">Minutes</label>
+<input name="dMinutes" id="displayMinutes" type="text" size=10 value=0 />
+</fieldset>
+<script>
+document.getElementById("displayHours").readOnly = true;
+document.getElementById("displayMinutes").readOnly = true;
+
+</script>
+<fieldset>
+<legend id="modify">Time Modifier</legend>
+
+<label for="mHours">Hours</label>
+<input name="mHours" id="modifyHours" type="text" size=10 onfocus='onFocusInput(this);' />
+<label for="mMinutes">Minutes</label>
+<input name="mMinutes" id="modifyMinutes" type="text" size=10 onfocus='onFocusInput(this);'  />
+</fieldset>
+<fieldset>
+<legend>Keypad Digits</legend>
+<nav id="row1">
+<input name="one" id="one" type="button" value="1" onclick='onClickButton(1);'/>
+<input name="two" id="two" type="button" value="2" onclick='onClickButton(2);'/>
+<input name="three" id="three" type="button" value="3" onclick='onClickButton(3);'/>
+</nav>
+<nav id="row2">
+<input name="four" id="four" type="button" value="4" onclick='onClickButton(4);'/>
+<input name="five" id="five" type="button" value="5" onclick='onClickButton(5);'/>
+<input name="six" id="six" type="button" value="6" onclick='onClickButton(6);'/>
+</nav>
+<nav id="row3">
+<input name="seven" id="seven" type="button" value="7" onclick='onClickButton(7);'/>
+<input name="eight" id="eight" type="button" value="8" onclick='onClickButton(8);'/>
+<input name="nine" id="nine" type="button" value="9" onclick='onClickButton(9);'/>
+</nav>
+<nav id="row4">
+<input name="zero" id="zero" type="button" value="0" onclick='onClickButton(0);'/>
+</nav>
+</fieldset>
+<fieldset id="ops">
+<legend>Operations</legend>
+<input name="add" id="add" type="button" value="+" onclick='onAddButton();' />
+<input name="sub" id="sub" type="button" value="-" onclick="onSubtractButton();"/>
+
+</fieldset>
+</form>
+</body>
+</html>

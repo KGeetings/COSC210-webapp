@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Decimal - Hexadecimal Converter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <script>
+  function onRightClick(){
+    var dec = document.getElementById("decimal").value;
+    document.getElementById("hexadecimal").value = Number(dec).toString(16);
+	}
+  function onLeftClick(){
+    var hex = document.getElementById("hexadecimal").value;
+    document.getElementById("decimal").value = parseInt(hex, 16);
+	}
+
+  </script>
+</head>
+<body>
+<div class='container'>
+	<div class='row'>
+		<div class='six columns head'>
+			<h1>Base converter</h1>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='five columns'>
+			<p>Decimal</p>
+		</div>
+		<div class='five columns'>
+			<p>Hexadecimal</p>
+		</div>	
+	</div>
+	<div class='row'>
+		<div class='eight columns'>
+			<input type='text' id='decimal' value=0 width=10>
+			<input type='button' id='d_to_h' value='-->' class="button" onclick='onRightClick();'>
+			<input type='button' id='h_to_d' value='<--' class="button" onclick='onLeftClick();'>
+			<input type='text' id='hexadecimal' value=0 width=10>
+		</div>	
+	</div>
+</div>
+</body>
+</html>

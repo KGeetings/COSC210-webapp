@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Birds</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <script src="js/script.js">
+  </script>
+</head>
+<body>
+<!-- top section -->
+<div class="section header">
+  <div class="container">
+    <div class="row">
+      <div class="four columns">
+        <p class="logo">Choose Your Bird</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- info section -->
+<div class="container">
+  <div class="row">
+    <h2 id="title">Title Here</h2>
+  </div>
+  <div class="row">
+    <div class="nine columns">
+		<p id="description">Description</p>
+		<img src="imgs/xpandaphoto.jpg" alt="bird photo" id="birdphoto">
+		<p id="more">More Description</p>    
+	</div>
+  </div>
+  <div class="row">
+    <div class="five columns">
+		<p>Choose Your Bird</p>
+	</div>
+  </div>
+  <div class="row">
+      <div class="two columns nav">
+        <input type="button" class="button" value="Bluebird" id="Bluebird" onclick="showbird(0)"
+        	 onmouseenter="setBackground(0)" onmouseleave="setBackground(10)">
+      </div>
+      <div class="two columns nav">
+        <input type="button" class="button" value="Cardinal" id="Cardinal" onclick="showbird(1)" 
+        	onmouseenter="setBackground(1)"  onmouseleave="setBackground(11)">
+      </div>
+      <div class="two columns nav">
+        <input type="button" class="button" value="GoldFinch" id="GoldFinch" onclick="showbird(2)"
+        	onmouseenter="setBackground(2)"  onmouseleave="setBackground(12)">
+      </div>
+  </div>
+</div>
+<!-- footer -->
+<div class="container">
+  <div class="row">
+      <p>&copy; 2020 Robert Franks</p>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Birds</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <script>
+  	function showbird(num){
+   	bird = ["bluebird","cardinal","goldfinch"]
+  	document.getElementById("title").innerHTML = bird[num]
+  	document.getElementById("birdphoto").setAttribute("src","images/" + bird[num] + ".jpg")
+  	var text = document.getElementById("description")
+  	var more = document.getElementById("more")
+  	switch (num) {
+  		case 0:
+  			text.innerHTML = "The bluebirds are a group of medium-sized, mostly insectivorous" + 
+  			" or omnivorous birds in the order of Passerines in the genus Sialia of the thrush family (Turdidae)." + 
+  			" Bluebirds are one of the few thrush genera in the Americas. They have blue, or blue and rose beige, plumage. " 
+  			more.innerHTML = "Female birds are less brightly colored than males, although color patterns are " + 
+  			"similar and there is no noticeable difference in size between the two sexes. "
+
+  			break
+  		case 1:
+  			text.innerHTML = "The northern cardinal (Cardinalis cardinalis) is a bird in the genus Cardinalis; it is also known" + 
+  			" colloquially as the redbird, common cardinal or just cardinal (which was its name prior to 1985)."
+  			more.innerHTML = " It can be found in southern eastern Canada, through the eastern United States" + 
+  			" from Maine to Minnesota to Texas, and south through Mexico, Belize, Guatemala and Big Island of Hawai’i." + 
+  			" Its habitat includes woodlands, gardens, shrublands, and wetlands."
+  			break
+  		case 2:
+  			text.innerHTML = "The American goldfinch (Spinus tristis) is a small North American bird in the finch family."
+  			more.innerHTML = " It is migratory, ranging from mid-Alberta to North Carolina during the breeding season,"+
+  			" and from just south of the Canada–United States border to Mexico during the winter."
+  			break
+  		}
+	}
+  </script>
+</head>
+<body>
+<!-- top section -->
+<div class="section header">
+  <div class="container">
+    <div class="row">
+      <div class="four columns">
+        <p class="logo">Choose Your Bird</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- info section -->
+<div class="container">
+  <div class="row">
+    <h2 id="title">Title Here</h2>
+  </div>
+  <div class="row">
+    <div class="nine columns">
+		<p id="description">Description</p>
+		<img src="" alt="bird photo" id="birdphoto">
+		<p id="more">More Description</p>    
+	</div>
+  </div>
+  <div class="row">
+    <div class="five columns">
+		<p>Choose Your Bird</p>
+	</div>
+  </div>
+  <div class="row">
+      <div class="two columns nav">
+        <input type="button" class="button" value="Bluebird" id="Bluebird" onclick="showbird(0)">
+      </div>
+      <div class="two columns nav">
+        <input type="button" class="button" value="Cardinal" id="Cardinal" onclick="showbird(1)">
+      </div>
+      <div class="two columns nav">
+        <input type="button" class="button" value="GoldFinch" id="GoldFinch" onclick="showbird(2)">
+      </div>
+  </div>
+</div>
+<!-- footer -->
+<div class="container">
+  <div class="row">
+      <p>&copy; 2020 Robert Franks</p>
+  </div>
+</div>
+</body></html>

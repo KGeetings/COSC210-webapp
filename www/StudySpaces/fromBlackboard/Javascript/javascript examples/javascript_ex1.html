@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Baseball Teams of the American League Central</title>
+<style>
+ul {
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	}
+ul li {
+	float: left;
+	}
+ul li a {
+	display: block;
+	width:100px;
+	text-align: center;
+	text-decoration: none;
+	padding: 10px 10px;
+	margin: 5px;
+	color: white;
+	background-color: lightslategray;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	}
+a:hover {
+	background-color:red;
+	}
+#minor {
+	clear: both;
+	margin: 5px;
+}
+#logo {
+	padding: 5px;
+	border: 2px solid red;
+	margin-left: 50px;
+}
+</style>
+<script>
+function showlogo(team) {
+	switch(team) {
+	case "sox":
+		document.getElementById("logo").src = "images/sox.jpg";
+		break;
+	case "indians":
+		document.getElementById("logo").src = "images/indians.jpg";
+		break;
+	case "tigers":
+		document.getElementById("logo").src = "images/tigers.jpg";
+		break;
+	case "royals":
+		document.getElementById("logo").src = "images/royals.jpg";
+		break;
+	case "twins":
+		document.getElementById("logo").src = "images/twins.jpg";
+
+		
+		}
+	}
+</script>
+</head>
+<body>
+<p>
+<h1 id="top">The best division in Major League Baseball</h1>
+<ul>
+<li onclick="showlogo('sox');"><a href="#sox">Chicago White Sox</a></li>
+<li onclick="showlogo('indians');"><a href="#indians">Cleveland Indians</a></li>
+<li onclick="showlogo('tigers');"><a href="#tigers">Detroit<br/> Tigers</a></li>
+<li onclick="showlogo('royals');"><a href="#royals">Kansas City Royals</a></li>
+<li onclick="showlogo('twins');"><a href="#twins">Minnesota Twins</a></li>
+</ul>
+</p>
+<p id="minor">It will be a competitive race for the division title in 2016!</p>
+<p><img src="" alt="team logo is here" id="logo"><br/></p>
+</body>
+</html>

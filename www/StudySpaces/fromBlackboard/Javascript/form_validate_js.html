@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Validation Example</title>
+<script>
+function validate(){
+  var phoneNumber = document.getElementById('phone-number').value;
+  var zipCode = document.getElementById('zip-code').value;
+  var phoneRGEX = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/;
+  var zipRGEX = /^\d{5}(-\d{4})?$/i;
+  var phoneResult = phoneRGEX.test(phoneNumber);
+  var zipResult = zipRGEX.test(zipCode);
+  if(phoneResult == false)
+  {
+    alert('Please enter a valid phone number');
+    return false;
+  }
+
+  if(zipResult == false)
+  {
+    alert('Please enter a valid zip code');
+    return false;
+  }
+
+  return true;
+}
+</script>
+</head>
+<body>
+<form action="" onsubmit="validate()">
+  <input type="text" id="phone-number" placeholder="phone number"/> <br>
+  <input type="text" id="zip-code" placeholder="zip code" /><br>
+  <input type="submit" />
+</form>
+</body>
+</html>

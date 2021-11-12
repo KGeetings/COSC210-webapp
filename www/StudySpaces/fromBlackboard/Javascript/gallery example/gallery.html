@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Rollover Images</title>
+<link href="site.css" rel="stylesheet">
+<style>
+#gallery {
+	float: left;
+	width: 90px;
+	margin-right: 30px;
+	margin-left: 10px;
+	border-right: white 1px dotted;
+}
+#gallery img {
+	display: inline-block;
+	margin: 0 0 10px 0;
+	border: 1px solid rgb(0,0,0);
+}
+#photo {
+	margin-left: 150px;
+	position: relative;
+}
+#photo img {
+	position: absolute;
+}
+</style>
+<script src="js/jquery-1.11.0.min.js"></script>
+<script>
+$(document).ready(function() {
+		
+$('#gallery img').each(function(i) {
+	var imgFile = $(this).attr('src');
+	var preloadImage = new Image();
+  var imgExt = /(\.\w{3,4}$)/;
+  preloadImage.src = imgFile.replace(imgExt,'_h$1');
+		
+	$(this).hover(
+		function() {
+			$(this).attr('src', preloadImage.src);
+		},
+		function () {
+		var currentSource=$(this).attr('src');
+			$(this).attr('src', imgFile);
+	}); // end hover
+}); // end each
+	
+//insert new programming below this line
+	
+	
+}); // end ready
+</script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="header">
+		<p class="logo">COSC 210 Database and the Web</p>
+	</div>
+	<div class="content">
+		<div class="main">
+			<h1>Bird slideshow</h1>
+			<div id="gallery"> <a href="images/large/bird1.jpg"><img src="images/small/bird1.jpg" width="100" height="66" alt="bluebird"></a> 
+			<a href="images/large/bird2.jpg"><img src="images/small/bird2.jpg" width="100" height="66" alt="cardinal"></a> 
+			<a href="images/large/bird3.jpg"><img src="images/small/bird3.jpg" width="100" height="66" alt="hawk"></a> 
+			<a href="images/large/bird4.jpg"><img src="images/small/bird4.jpg" width="100" height="66" alt="tanager"></a> 
+			<div id="photo"></div>
+		</div>
+	</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Birds</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <script src="js/script.js">
+  </script>
+  <script>
+  list = ["seats","computers","food","noise","lighting","rating","submit"]
+  index = 0
+  function doit(){
+  		invisible(list[index])
+  		visible(list[index+1])
+  		index++
+  		if (index == list.length){
+  			visible('reset')
+  		}
+  }
+  </script>
+</head>
+<body>
+		<h1>Form to fill out about more info about the location</h1>
+		<form method='POST' action=''>
+		<p>Please complete the following information about the location</p>
+		<label class="seats">Number of seats?</label>
+		<input type="number" name="seats" min="1" max="50" class="seats"><br>
+		<label class="computers">Number of computers?</label>
+		<input type="number" name="computers" min="1" max="50" class="computers"><br>
+		<textarea name="food" rows="3" cols="40" class="food">Food availability description
+		</textarea><br>
+		<label class="noise">Rate how noisy the location is (1 to 10-high).</label>
+		<input type="number" name="noise" min="1" max="10" class="noise"><br>
+		<label class="lighting">What type of lighting?</label>
+		<input type="text" name="lighting" class="lighting"><br>
+		<label class="rating">Overall rating of the location as a place to study (1 to 10-high)?</label>
+		<input type="number" name="rating" min="1" max="10" class="rating"><br>
+		
+		<input type="submit" class="submit"><br>
+		<input type="reset" class="reset"><br>
+		<input type="button" value="next" class="next" onclick="doit()">
+		<input type="hidden" name="buildingid" value="$bid">
+		<input type="hidden" name="description" value="spaces">
+		<input type="hidden" name="locid" value="$locid">
+		</form>
+</body></html>

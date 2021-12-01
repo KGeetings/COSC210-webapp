@@ -92,7 +92,7 @@ if ($connect -> connect_error) die ($connect -> connect_error);
 	$result = $connect->query($insert_loc_image_sql);
 	if (!$result) die ($connect->error);	
 	
-	$imagepath = "../Images/".$now.basename($_FILES["fileToUpload"]["name"]);
+	$imagepath = "/Images/".$now.basename($_FILES["fileToUpload"]["name"]);
 	echo "<p>The image file associated with building: $bldg and location: $loc</p>\n";
 	echo "<img src='$imagepath'>\n";
 	

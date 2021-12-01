@@ -17,7 +17,9 @@ $loc = $_GET['location'];
 $bldg = $_GET['building'];
 $imagepath = $_GET['imagepath'];
 echo "<p>The image file associated with building: $bldg and location: $loc</p>\n";
-echo "<img src='/StudySpaces/Images/$imagepath'>\n";
+echo "hey";
+echo "$imagepath";
+echo "<img src='/Images/$imagepath'>\n";
 ?>
 </body>
 </htmL>

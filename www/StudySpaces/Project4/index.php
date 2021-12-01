@@ -10,61 +10,9 @@
   <link rel="stylesheet" href="css/custom_alt.css">
   <script src="js/script.js"></script>
   </script>
-  <script>
-  labels = ["Number of seats?",
-  				"Number of computers?",
-  				"Food availability",
-  				"Rate how noisy the location is (1 to 10-high).",
-  				"What type of lighting?",
-  				"Overall rating of the location as a place to study (1 to 10-high)?"]
-  widgets = ['<input type="number" name="seats" min="1" max="50" id="seats"><br>',
-  				'<input type="number" name="computers" min="1" max="50" id="computers"><br>',
-  				'<textarea name="food" rows="3" cols="40" id="food"></textarea><br>',
-  				'<input type="number" name="noise" min="1" max="10" id="noise"><br>',
-  				'<input type="text" name="lighting" id="lighting"><br>',
-  				'<input type="number" name="rating" min="1" max="10" id="rating"><br>']
-  list = ["seats","computers","food","noise","lighting","rating"]
-  index = 0
-  function doit(){
-  		if ( index < labels.length) {
-  			if (index != 0) {
-  				O(list[index-1]+"_hide").value = O(list[index-1]).value
-  			}
-  			O('label').innerHTML = labels[index]
-  			O('widget').innerHTML = widgets[index]
-  			index++
-  			}
-  		else {
-  			O('label').innerHTML = ""
-  			O('widget').innerHTML = ""
-  			S('submit').visibility = "visible"
-  			S('reset').visibility = "visible"
-  			S('next').visibility = "hidden"
-  		}
-  }
- </script>
- </head>
+  
  <body>
-		<h1>Central College Study Spaces</h1>
-		<form method='POST' action=''>
-		<p>Please complete the following information about the location</p>
-		<label id='label'></label>
-		<div id="widget"></div>
-		<input type="button" value="next" id="next" onclick="doit()"><br>
-		<input type="submit" id="submit"><br>
-		<input type="reset" id="reset">
-		<input type="hidden" name="seats" id="seats_hide" value="">
-		<input type="hidden" name="computers" id="computers_hide" value="">
-		<input type="hidden" name="food" id="food_hide" value="">
-		<input type="hidden" name="noise" id="noise_hide" value="">
-		<input type="hidden" name="lighting" id="lighting_hide" value="">
-		<input type="hidden" name="rating" id="rating_hide" value="">
-		<input type="hidden" name="buildingid" value="$bid">
-		<input type="hidden" name="description" value="spaces">
-		<input type="hidden" name="locid" value="$locid">
-		</form>
- </body>
- <body>
+	 <h1>Central College Study Spaces</h1>
 	<?php
 	$hostname = "db";
 	$username = "root";
@@ -73,7 +21,7 @@
 	$connect = new mysqli($hostname, $username, $password, $database); 
 	if ($connect -> connect_error) die ($connect -> connect_error);
 	if (!isset($_POST['building'])) {
-		echo "<h2>For which building do you wish to submit an image?</h2>\n";
+		echo "<h2>For which building do you wish to search?</h2>\n";
 	
 		$buildings = array();
 		// get the buidling names
@@ -98,7 +46,7 @@
 		echo "</form>\n";
 	}
 	else if (!isset($_POST['location'])){
-		echo "<h2>For which location do you wish to submit an image?</h2>\n";
+		echo "<h2>For which location do you wish to search?</h2>\n";
 		$bldg = $_POST['building'];
 		$query = "select id, description from locations ".
 			"where buildingid = (select id from buildings where name = '$bldg')";
@@ -121,13 +69,42 @@
 	else { 
 		$bldg = $_POST['building'];
 		$loc = $_POST['location'];
-		echo "<form action='upload_insert.php' method='post' enctype='multipart/form-data'>\n";
-			echo "Select image to upload:";
-			echo "<input type='file' name='fileToUpload' id='fileToUpload'>\n";
-			echo "<input type='submit' value='Upload Image' name='submit'>\n";
-		echo "<input type='hidden' value='$bldg' name='building'>";
-		echo "<input type='hidden' value='$loc' name='location'>";
-		echo "</form>\n";
+		echo "Loc is $loc\n";
+		echo "bldg is $bldg\n";
+		$query1 = "select description from locations where buildingid = (select id from buildings where name = '$bldg') AND id = '$loc'";
+		$result1 = $connect->query($query1);
+		if (!$result1) die ($connect->error);
+		$rows = $result1->num_rows;
+		for ($r = 0; $r < $rows; ++$r){
+			$result1->data_seek($r);
+			$columns = $result1->fetch_array(MYSQLI_NUM);
+			}
+		echo "<h2>You are now looking at Building: $bldg, Location: $columns[0]</h2>\n";
+		$query2 = "select path from images where id in (select image_id from loc_image where loc_id = '$loc' AND building_id = (select id from buildings where name = '$bldg'))";
+		$result2 = $connect->query($query2);
+		if (!$result2) die ($connect->error);
+		$rows2 = $result2->num_rows;
+		echo "$rows2";
+		for ($r = 0; $r < $rows2; ++$r){
+			$result2->data_seek($r);
+			$columns2 = $result2->fetch_array(MYSQLI_NUM);
+			}
+		echo "<br> result2 array";
+		print_r($result2);
+		echo "<br> Columns2 array";
+		print_r($columns2);
+		echo "<br> $columns2[0]";
+		echo "$columns2[1]";
+		echo "$columns2[2]";
+		$newcolumn0 = strstr($columns2[0], '/Images');
+		echo "$newcolumn0";
+		$newcolumn1 = strstr($columns2[1], '/Images');
+		echo "$newcolumn1";
+		$newcolumn2 = strstr($columns2[2], '/Images');
+		echo "$newcolumn2";
+
+		echo "<img src='$newcolumn0' alt='image0'>";
+
 	}
 	?>
  </body>

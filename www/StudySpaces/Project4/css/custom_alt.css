@@ -63,8 +63,9 @@ hr, footer {
     background-color: aqua;
     font-size: 4.2rem;
   }
-  img {
-  	width:75%;
+  .image0 {
+  	width:25%;
+    float:left;
   	}
 }
 

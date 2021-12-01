@@ -1,0 +1,79 @@
+/* Mobile first queries */
+/* applies to ALL widths */
+.logo {
+  font-weight: 600;
+  color: rgb(255, 209, 143);
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-left: 10px;
+  z-index: 100;
+}
+h1 {
+  font-size: 3rem;
+  text-align: center;
+  width: 100%;
+}
+h2 {
+  font-size: 2.5rem;
+}
+img{
+		float:right;
+		padding-top:40px;
+		padding-left:3%;
+		padding-bottom:10px;
+		width:30%
+		}
+hr, footer {
+  color: rgb(255, 209, 143);
+}
+.title {
+	color: black;
+}
+.computers, .food, .noise, .lighting, .rating, .submit, .reset, .seats {
+	margin-left:20px;
+}
+#next {
+	margin-left:20px;
+	visibility: visible;
+}
+#submit, #reset {
+	margin-left:20px;
+	visibility: hidden;
+}
+
+/* Larger than mobile */
+/* applies to all widths 400px and greater */
+@media (min-width: 400px) {
+  .logo {
+    position: static;
+    background-color: transparent;
+    font-size: 2rem;
+    line-height: 1;
+  }
+  .nav .button {
+    width: auto;
+  }
+  h1 {
+    font-size: 5rem;
+  }
+  h2 {
+    background-color: aqua;
+    font-size: 4.2rem;
+  }
+  img {
+  	width:75%;
+  	}
+}
+
+/* Larger than tablet */
+/* applies to all widths 750px and greater */
+@media (min-width: 750px) {
+  .logo {
+    font-size: 3rem;
+    position: relative;
+    top: 5px;
+  }
+}

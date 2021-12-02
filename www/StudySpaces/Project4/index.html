@@ -99,24 +99,27 @@
 		IMAGES;
 
 		echo <<<HTML
-			<div id="images">
-				<img src="$newcolumn0" id="image0">
-				<img src="$newcolumn1" id="image1">
-				<img src="$newcolumn2" id="image2">
-			</div>
-			<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-			<script>
-				function getPics() {} //just for this demo
-				const imgs = document.querySelectorAll('.gallery');
-				const fullPage = document.querySelector('#fullpage');
-				imgs.forEach(img => {
-					img.addEventListener('click', function() {
-					fullPage.style.backgroundImage = 'url(' + img.src + ')';
-					fullPage.style.display = 'block';
-					});
-				});
-			</script>
-			<style>
+		<div id="images">
+			<img src="$newcolumn0" id="image0">
+			<img src="$newcolumn1" id="image1">
+			<img src="$newcolumn2" id="image2">
+		</div>
+		<script src="https://code.jquery.com/jquery-1.12.4.min.js">
+			if (typeof jQuery == 'undefined') {
+				document.write(unescape("%3Cscript src='js/jquery-1.12.4.min.js' type='text/javascript'%3E%3C/script%3E"));
+			}
+			function getPics() {} //just for this demo
+			alert("Hello");
+			const imgs = document.querySelectorAll('.gallery');
+			const fullPage = document.querySelector('#fullpage');
+			imgs.forEach(img => {
+				img.addEventListener('click', function() {
+				fullPage.style.backgroundImage = 'url(' + img.src + ')';
+				fullPage.style.display = 'block';
+  				});
+			});
+		</script>
+		<style>
 				#fullpage {
 				display: none;
 				position: absolute;
@@ -132,17 +135,17 @@
 				}
 			</style>
 
-			<body onload="getPics()">
-			<div class="container">
-				<h1>Photo Gallery</h1>
-				<div class="gallery">
-					<img src="$newcolumn0" id="image0">
-					<img src="$newcolumn1" id="image1">
-					<img src="$newcolumn2" id="image2">
-				</div>
+		<body onload="getPics()">
+		<div class="container">
+			<h1>Photo Gallery</h1>
+			<div class="gallery">
+				<img src="$newcolumn0" id="image0">
+				<img src="$newcolumn1" id="image1">
+				<img src="$newcolumn2" id="image2">
 			</div>
-			<div id="fullpage" onclick="this.style.display='none';"></div>
-		HTML;
+		</div>
+		<div id="fullpage" onclick="this.style.display='none';"></div>
+HTML;
 
 	}
 	?>

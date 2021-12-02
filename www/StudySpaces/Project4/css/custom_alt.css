@@ -8,7 +8,6 @@ h1 {
   width: 95%;
   margin: auto;
   word-wrap: break-word;
-  border: 5px solid black;
 }
 
 h2 {
@@ -17,7 +16,6 @@ h2 {
   width: 95%;
   margin: auto;
   word-wrap: break-word;
-  border: 5px solid orange;
 }
 
 h3 {
@@ -26,7 +24,6 @@ h3 {
   float: left;
   margin: auto;
   word-wrap: break-word;
-  border: 5px solid green;
 }
 
 h4 {
@@ -35,7 +32,6 @@ h4 {
   float: left;
   margin: auto;
   word-wrap: break-word;
-  border: 5px solid blue;
 }
 
 #image0 {
@@ -44,21 +40,18 @@ h4 {
   width: 50%;
   height: auto;
   object-fit:contain;
-  border: 5px solid green;
 }
 #image1 {
   float: center;
   padding-top: 10px;
   width: 50%;
   height: auto;
-  border: 5px solid yellow;
 }
 #image2 {
   float: center;
   padding-top: 10px;
   width: 50%;
   height: auto;
-  border: 5px solid red;
 }
 .images {
   display:inline-block;
@@ -66,7 +59,6 @@ h4 {
   max-width: 100%;
   height: auto;
   margin: auto;
-  border: 5px solid blue;
 }
 
 .res_space {
@@ -74,7 +66,6 @@ h4 {
   width: 95%;
   height: auto;
   margin: auto;
-  border: 5px solid purple;
 }
 
 .footer {
@@ -82,7 +73,6 @@ h4 {
   width: 95%;
   height: auto;
   margin: auto;
-  border: 5px solid green;
 }
 
 
@@ -134,7 +124,6 @@ td, th {
     font-size: 5rem;
   }
   h2 {
-    background-color: aqua;
     font-size: 1.875rem;
   }
   #image0 {
@@ -143,21 +132,18 @@ td, th {
     width: 30%;
     height: auto;
     object-fit:contain;
-    border: 5px solid green;
   }
   #image1 {
     float: center;
     padding-top: 10px;
     width: 30%;
     height: auto;
-    border: 5px solid yellow;
   }
   #image2 {
     float: center;
     padding-top: 10px;
     width: 30%;
     height: auto;
-    border: 5px solid red;
   }
 }
 
@@ -177,7 +163,6 @@ td, th {
     width: 45%;
     margin: auto;
     word-wrap: break-word;
-    border: 5px solid orange;
   }
 
   #image0 {
@@ -186,21 +171,18 @@ td, th {
     height: auto;
     max-height: 200px;
     object-fit:contain;
-    border: 5px solid green;
   }
   #image1 {
     float: center;
     width: 50%;
     height: auto;
     max-height: 200px;
-    border: 5px solid yellow;
   }
   #image2 {
     float: center;
     width: 50%;
     height: auto;
     max-height: 200px;
-    border: 5px solid red;
   }
   .images {
     display:block;
@@ -209,7 +191,6 @@ td, th {
     max-width: 50%;
     height: auto;
     margin: auto;
-    border: 5px solid blue;
   }
 
   .res_space {
@@ -218,6 +199,5 @@ td, th {
     width: 45%;
     height: auto;
     margin: auto;
-    border: 5px solid purple;
   }
 }

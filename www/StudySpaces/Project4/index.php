@@ -81,7 +81,36 @@
 			$result1->data_seek($r);
 			$columns = $result1->fetch_array(MYSQLI_NUM);
 			}
-		echo "<h2>You are now looking at Building: $bldg, <br>Location: $columns[0]</h2>";
+		echo "<h2>You are now looking at Building: $bldg, <br>Location: $columns[0]";
+		
+		// adding previous and next buttons to navigate through the locations
+		if ($loc == 1){
+			echo "<form action='' method='POST'>\n";
+			echo "<input type='submit' value='Next'>\n";
+			echo "<input type='hidden' value='$bldg' name='building'>\n";
+			echo "<input type='hidden' value='$loc' name='location'>\n";
+			echo "</form>\n";
+		}
+		else if ($loc == $rows) {
+			echo "<form action='' method='POST'>\n";
+			echo "<input type='submit' value='Previous'>\n";
+			echo "<input type='hidden' value='$bldg' name='building'>\n";
+			echo "<input type='hidden' value='$loc' name='location'>\n";
+			echo "</form>\n";
+		}
+		else {
+			echo "<form action='' method='POST'>\n";
+			echo "<input type='submit' value='Previous'>\n";
+			echo "<input type='hidden' value='$bldg' name='building'>\n";
+			echo "<input type='hidden' value='$loc' name='location'>\n";
+			echo "</form>\n";
+			echo "<form action='' method='POST'>\n";
+			echo "<input type='submit' value='Next'>\n";
+			echo "<input type='hidden' value='$bldg' name='building'>\n";
+			echo "<input type='hidden' value='$loc' name='location'>\n";
+			echo "</form>\n";
+		}
+		echo "</h2>\n";
 		
 		$result2img = array();
 		$query2 = "select path from images where id in (select image_id from loc_image where loc_id = '$loc' AND building_id = (select id from buildings where name = '$bldg'))";

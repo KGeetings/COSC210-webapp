@@ -2,6 +2,7 @@
 /* applies to ALL widths */
 
 h1 {
+  display: inline-block;
   font-size: 2rem;
   text-align: center;
   width: 95%;
@@ -11,6 +12,7 @@ h1 {
 }
 
 h2 {
+  display: inline-block;
   font-size: 1.875rem;
   width: 95%;
   margin: auto;
@@ -59,7 +61,6 @@ h4 {
   border: 5px solid red;
 }
 .images {
-  margin :0 auto;
   display:inline-block;
   width: 95%;
   max-width: 100%;
@@ -76,17 +77,14 @@ h4 {
   border: 5px solid purple;
 }
 
-hr, footer {
-  color: rgb(255, 209, 143);
+.footer {
+  display:inline-block;
+  width: 95%;
+  height: auto;
+  margin: auto;
+  border: 5px solid green;
 }
 
-.title {
-	color: black;
-}
-
-.computers, .food, .noise, .lighting, .rating, .submit, .reset, .seats {
-	margin-left:20px;
-}
 
 #next {
 	margin-left:20px;
@@ -96,6 +94,28 @@ hr, footer {
 #submit, #reset {
 	margin-left:20px;
 	visibility: hidden;
+}
+
+/* 
+Generic Styling, for Desktops/Laptops 
+*/
+table { 
+  width: 100%; 
+  border-collapse: collapse; 
+}
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+  background: #eee; 
+}
+th { 
+  background: #333; 
+  color: white; 
+  font-weight: bold; 
+}
+td, th { 
+  padding: 6px; 
+  border: 1px solid #ccc; 
+  text-align: left; 
 }
 
 /* Larger than mobile */
@@ -115,7 +135,29 @@ hr, footer {
   }
   h2 {
     background-color: aqua;
-    font-size: 4.2rem;
+    font-size: 1.875rem;
+  }
+  #image0 {
+    float: center;
+    padding-top: 10px;
+    width: 30%;
+    height: auto;
+    object-fit:contain;
+    border: 5px solid green;
+  }
+  #image1 {
+    float: center;
+    padding-top: 10px;
+    width: 30%;
+    height: auto;
+    border: 5px solid yellow;
+  }
+  #image2 {
+    float: center;
+    padding-top: 10px;
+    width: 30%;
+    height: auto;
+    border: 5px solid red;
   }
 }
 
@@ -126,5 +168,56 @@ hr, footer {
     font-size: 3rem;
     position: relative;
     top: 5px;
+  }
+
+  h2 {
+    display: block;
+    float: left;
+    font-size: 1.875rem;
+    width: 45%;
+    margin: auto;
+    word-wrap: break-word;
+    border: 5px solid orange;
+  }
+
+  #image0 {
+    float: center;
+    width: 50%;
+    height: auto;
+    max-height: 200px;
+    object-fit:contain;
+    border: 5px solid green;
+  }
+  #image1 {
+    float: center;
+    width: 50%;
+    height: auto;
+    max-height: 200px;
+    border: 5px solid yellow;
+  }
+  #image2 {
+    float: center;
+    width: 50%;
+    height: auto;
+    max-height: 200px;
+    border: 5px solid red;
+  }
+  .images {
+    display:block;
+    float: right;
+    width: 50%;
+    max-width: 50%;
+    height: auto;
+    margin: auto;
+    border: 5px solid blue;
+  }
+
+  .res_space {
+    display:block;
+    float: left;
+    width: 45%;
+    height: auto;
+    margin: auto;
+    border: 5px solid purple;
   }
 }

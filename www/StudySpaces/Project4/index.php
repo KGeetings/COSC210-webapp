@@ -16,6 +16,14 @@
 	 <h1>Central College Study Spaces</h1>
 	<?php
 	// Container 1 is the heading above
+
+	// define a variable to later increment location_idINT
+	if (isset($_SESSION['location_idINT'])) {
+		$location_idINT = $_SESSION['location_idINT'];
+	} else {
+		$location_idINT = 0;
+	}
+
 	$hostname = "db";
 	$username = "root";
 	$password = "password";
@@ -86,31 +94,40 @@
 		// adding previous and next buttons to navigate through the locations
 		if ($loc == 1){
 			echo "<form action='' method='POST'>\n";
-			echo "<input type='submit' value='Next'>\n";
+			echo "<input type='submit' value='Next' name='Next'>\n";
 			echo "<input type='hidden' value='$bldg' name='building'>\n";
 			echo "<input type='hidden' value='$loc' name='location'>\n";
 			echo "</form>\n";
 		}
 		else if ($loc == $rows) {
 			echo "<form action='' method='POST'>\n";
-			echo "<input type='submit' value='Previous'>\n";
+			echo "<input type='submit' value='Previous' name='Previous'>\n";
 			echo "<input type='hidden' value='$bldg' name='building'>\n";
 			echo "<input type='hidden' value='$loc' name='location'>\n";
 			echo "</form>\n";
 		}
 		else {
 			echo "<form action='' method='POST'>\n";
-			echo "<input type='submit' value='Previous'>\n";
+			echo "<input type='submit' value='Previous' name='Previous'>\n";
 			echo "<input type='hidden' value='$bldg' name='building'>\n";
 			echo "<input type='hidden' value='$loc' name='location'>\n";
 			echo "</form>\n";
 			echo "<form action='' method='POST'>\n";
-			echo "<input type='submit' value='Next'>\n";
+			echo "<input type='submit' value='Next' name='Next'>\n";
 			echo "<input type='hidden' value='$bldg' name='building'>\n";
 			echo "<input type='hidden' value='$loc' name='location'>\n";
 			echo "</form>\n";
 		}
 		echo "</h2>\n";
+		// increment location_idINT if the next or previous button have been clicked
+		if (isset($_POST['Next'])) {
+			$location_idINT = $location_idINT + 1;
+			echo "You are now looking at location $location_idINT";
+		}
+		else if (isset($_POST['Previous'])) {
+			$location_idINT = $location_idINT - 1;
+			echo "You are now looking at location $location_idINT";
+		}
 		
 		$result2img = array();
 		$query2 = "select path from images where id in (select image_id from loc_image where loc_id = '$loc' AND building_id = (select id from buildings where name = '$bldg'))";

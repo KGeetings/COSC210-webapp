@@ -69,8 +69,6 @@
 	else { 
 		$bldg = $_POST['building'];
 		$loc = $_POST['location'];
-		echo "Loc is $loc\n";
-		echo "bldg is $bldg\n";
 		$query1 = "select description from locations where buildingid = (select id from buildings where name = '$bldg') AND id = '$loc'";
 		$result1 = $connect->query($query1);
 		if (!$result1) die ($connect->error);
@@ -79,31 +77,38 @@
 			$result1->data_seek($r);
 			$columns = $result1->fetch_array(MYSQLI_NUM);
 			}
-		echo "<h2>You are now looking at Building: $bldg, Location: $columns[0]</h2>\n";
+		echo "<h2>You are now looking at Building: $bldg, <br>Location: $columns[0]</h2>\n";
+		
+		$result2img = array();
 		$query2 = "select path from images where id in (select image_id from loc_image where loc_id = '$loc' AND building_id = (select id from buildings where name = '$bldg'))";
 		$result2 = $connect->query($query2);
 		if (!$result2) die ($connect->error);
 		$rows2 = $result2->num_rows;
-		echo "$rows2";
 		for ($r = 0; $r < $rows2; ++$r){
 			$result2->data_seek($r);
 			$columns2 = $result2->fetch_array(MYSQLI_NUM);
+			array_push($result2img, $columns2[0]);
 			}
-		echo "<br> result2 array";
-		print_r($result2);
-		echo "<br> Columns2 array";
-		print_r($columns2);
-		echo "<br> $columns2[0]";
-		echo "$columns2[1]";
-		echo "$columns2[2]";
-		$newcolumn0 = strstr($columns2[0], '/Images');
-		echo "$newcolumn0";
-		$newcolumn1 = strstr($columns2[1], '/Images');
-		echo "$newcolumn1";
-		$newcolumn2 = strstr($columns2[2], '/Images');
-		echo "$newcolumn2";
-
-		echo "<img src='$newcolumn0' alt='image0'>";
+		$newcolumn0 = strstr($result2img[0], '/Images');
+		$newcolumn1 = strstr($result2img[1], '/Images');
+		$newcolumn2 = strstr($result2img[2], '/Images');
+		
+		print <<<IMAGES
+		<body>
+			<div id = "holderImages">
+				<div class='image0'>
+					<img src='$newcolumn0'>
+				</div>
+				<div class='image1'>
+					<img src='$newcolumn1'>
+				</div>
+				<div class='image2'>
+					<img src='$newcolumn2'>
+				</div>
+			</div>
+		</body>
+		
+	IMAGES;
 
 	}
 	?>

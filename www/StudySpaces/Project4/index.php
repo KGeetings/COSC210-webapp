@@ -78,7 +78,7 @@
 			$result1->data_seek($r);
 			$columns = $result1->fetch_array(MYSQLI_NUM);
 			}
-		echo "<h2>You are now looking at Building: $bldg, <br>Location: $columns[0]</h2>\n";
+		echo "<h2>You are now looking at Building: $bldg, <br>Location: $columns[0]</h2>";
 		
 		$result2img = array();
 		$query2 = "select path from images where id in (select image_id from loc_image where loc_id = '$loc' AND building_id = (select id from buildings where name = '$bldg'))";
@@ -95,55 +95,102 @@
 		$newcolumn2 = strstr($result2img[2], '/Images');
 		
 		print <<<IMAGES
-
-		IMAGES;
-
-		echo <<<HTML
-			<div id="images">
+			<div class="images">
 				<img src="$newcolumn0" id="image0">
 				<img src="$newcolumn1" id="image1">
 				<img src="$newcolumn2" id="image2">
 			</div>
-			<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-			<script>
-				function getPics() {} //just for this demo
-				const imgs = document.querySelectorAll('.gallery');
-				const fullPage = document.querySelector('#fullpage');
-				imgs.forEach(img => {
-					img.addEventListener('click', function() {
-					fullPage.style.backgroundImage = 'url(' + img.src + ')';
-					fullPage.style.display = 'block';
-					});
-				});
-			</script>
-			<style>
-				#fullpage {
-				display: none;
-				position: absolute;
-				z-index: 9999;
-				top: 0;
-				left: 0;
-				width: 100vw;
-				height: 100vh;
-				background-size: contain;
-				background-repeat: no-repeat no-repeat;
-				background-position: center center;
-				background-color: black;
-				}
-			</style>
-
-			<body onload="getPics()">
-			<div class="container">
-				<h1>Photo Gallery</h1>
-				<div class="gallery">
-					<img src="$newcolumn0" id="image0">
-					<img src="$newcolumn1" id="image1">
-					<img src="$newcolumn2" id="image2">
-				</div>
-			</div>
-			<div id="fullpage" onclick="this.style.display='none';"></div>
-		HTML;
-
+		IMAGES;
+		
+		echo "<div class = 'res_space'>";
+		
+		echo "<table><tr><td>";
+		echo "<h3>Available Resources: </h3></td>";
+		echo "<h4>";
+		$query3 = "select description from resources where id in (select resource_id from loc_res where loc_id = '$loc' AND building_id = (select id from buildings where name = '$bldg'))";
+		$result3 = $connect->query($query3);
+		if (!$result3) die ($connect->error);
+		$rows3 = $result3->num_rows;
+		echo "<td>";
+		for ($r = 0; $r < $rows3; ++$r){
+			$result3->data_seek($r);
+			$columns3 = $result3->fetch_array(MYSQLI_NUM);
+			echo "$columns3[0]\n";
+			}
+		echo "</td></tr></h4><tr><td>";
+		echo "<h3>Seating: </h3>";
+		echo "<h4>";
+		$query4 = "select seating from spaces where location_id = '$loc' AND building_id = (select id from buildings where name = '$bldg')";
+		$result4 = $connect->query($query4);
+		if (!$result4) die ($connect->error);
+		$rows4 = $result4->num_rows;
+		for ($r = 0; $r < $rows4; ++$r){
+			$result4->data_seek($r);
+			$columns4 = $result4->fetch_array(MYSQLI_NUM);
+			echo "$columns4[0]";
+			}
+		echo "</td></tr></h4><tr><td>";
+		echo "<h3>Computers: </h3>";
+		echo "<h4>";
+		$query5 = "select computers from spaces where location_id = '$loc' AND building_id = (select id from buildings where name = '$bldg')";
+		$result5 = $connect->query($query5);
+		if (!$result5) die ($connect->error);
+		$rows5 = $result5->num_rows;
+		for ($r = 0; $r < $rows5; ++$r){
+			$result5->data_seek($r);
+			$columns5 = $result5->fetch_array(MYSQLI_NUM);
+			echo "$columns5[0]";
+			}
+		echo "</td></tr></h4><tr><td>";
+		echo "<h3>Food: </h3>";
+		echo "<h4>";
+		$query6 = "select food from spaces where location_id = '$loc' AND building_id = (select id from buildings where name = '$bldg')";
+		$result6 = $connect->query($query6);
+		if (!$result6) die ($connect->error);
+		$rows6 = $result6->num_rows;
+		for ($r = 0; $r < $rows6; ++$r){
+			$result6->data_seek($r);
+			$columns6 = $result6->fetch_array(MYSQLI_NUM);
+			echo "$columns6[0]";
+			}
+		echo "</td></tr></h4><tr><td>";
+		echo "<h3>Noise level: </h3>";
+		echo "<h4>";
+		$query7 = "select noise from spaces where location_id = '$loc' AND building_id = (select id from buildings where name = '$bldg')";
+		$result7 = $connect->query($query7);
+		if (!$result7) die ($connect->error);
+		$rows7 = $result7->num_rows;
+		for ($r = 0; $r < $rows7; ++$r){
+			$result7->data_seek($r);
+			$columns7 = $result7->fetch_array(MYSQLI_NUM);
+			echo "$columns7[0]";
+			}
+		echo "</td></tr></h4><tr><td>";
+		echo "<h3>Lighting: </h3>";
+		echo "<h4>";
+		$query8 = "select lighting from spaces where location_id = '$loc' AND building_id = (select id from buildings where name = '$bldg')";
+		$result8 = $connect->query($query8);
+		if (!$result8) die ($connect->error);
+		$rows8 = $result8->num_rows;
+		for ($r = 0; $r < $rows8; ++$r){
+			$result8->data_seek($r);
+			$columns8 = $result8->fetch_array(MYSQLI_NUM);
+			echo "$columns8[0]";
+			}
+		echo "</td></tr></h4><tr><td>";
+		echo "<h3>Rating: </h3>";
+		echo "<h4>";
+		$query9 = "select rating from spaces where location_id = '$loc' AND building_id = (select id from buildings where name = '$bldg')";
+		$result9 = $connect->query($query9);
+		if (!$result9) die ($connect->error);
+		$rows9 = $result9->num_rows;
+		for ($r = 0; $r < $rows9; ++$r){
+			$result9->data_seek($r);
+			$columns9 = $result9->fetch_array(MYSQLI_NUM);
+			echo "$columns9[0]";
+			}
+		echo "</td></tr></h4></table>";
+		echo "</div>";
 	}
 	?>
  </body>

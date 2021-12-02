@@ -75,12 +75,14 @@
 			echo "</select>\n";
 		echo "<input type='submit' value='Press me'>\n";
 		echo "<input type='hidden' value='$bldg' name='building'>";
+		echo "<input type='hidden' value='$rows' name='rows_location'>";
 		echo "</form>\n";
 		}
 	else { 
 		// Prints the location and once finished prints the location and building Container 2
 		$bldg = $_POST['building'];
 		$loc = $_POST['location'];
+		$rows_location = $_POST['rows_location'];
 		$query1 = "select description from locations where buildingid = (select id from buildings where name = '$bldg') AND id = '$loc'";
 		$result1 = $connect->query($query1);
 		if (!$result1) die ($connect->error);
@@ -91,31 +93,40 @@
 			}
 		echo "<h2>You are now looking at Building: $bldg, <br>Location: $columns[0]";
 		
+
 		// adding previous and next buttons to navigate through the locations
 		if ($loc == 1){
+			$tempinc = incrementLoc($loc);
 			echo "<form action='' method='POST'>\n";
 			echo "<input type='submit' value='Next' name='Next'>\n";
 			echo "<input type='hidden' value='$bldg' name='building'>\n";
-			echo "<input type='hidden' value='$loc' name='location'>\n";
+			echo "<input type='hidden' value='$tempinc' name='location'>\n";
+			echo "<input type='hidden' value='$rows_location' name='rows_location'>";
 			echo "</form>\n";
 		}
-		else if ($loc == $rows) {
+		else if ($loc == $rows_location) {
+			$tempinc = decrementLoc($loc);
 			echo "<form action='' method='POST'>\n";
 			echo "<input type='submit' value='Previous' name='Previous'>\n";
 			echo "<input type='hidden' value='$bldg' name='building'>\n";
-			echo "<input type='hidden' value='$loc' name='location'>\n";
+			echo "<input type='hidden' value='$tempinc' name='location'>\n";
+			echo "<input type='hidden' value='$rows_location' name='rows_location'>";
 			echo "</form>\n";
 		}
 		else {
+			$tempinc = incrementLoc($loc);
+			$tempinc = decrementLoc($loc);
 			echo "<form action='' method='POST'>\n";
 			echo "<input type='submit' value='Previous' name='Previous'>\n";
 			echo "<input type='hidden' value='$bldg' name='building'>\n";
-			echo "<input type='hidden' value='$loc' name='location'>\n";
+			echo "<input type='hidden' value='$tempinc' name='location'>\n";
+			echo "<input type='hidden' value='$rows_location' name='rows_location'>";
 			echo "</form>\n";
 			echo "<form action='' method='POST'>\n";
 			echo "<input type='submit' value='Next' name='Next'>\n";
 			echo "<input type='hidden' value='$bldg' name='building'>\n";
-			echo "<input type='hidden' value='$loc' name='location'>\n";
+			echo "<input type='hidden' value='$tempinc' name='location'>\n";
+			echo "<input type='hidden' value='$rows_location' name='rows_location'>";
 			echo "</form>\n";
 		}
 		echo "</h2>\n";
@@ -147,8 +158,11 @@
 		print <<<IMAGES
 			<div class="images">
 				<img src="$newcolumn0" id="image0">
+				<a href = "$newcolumn0" id='image0' target="_blank">
 				<img src="$newcolumn1" id="image1">
+				<a href = "$newcolumn1" id='image1' target="_blank">
 				<img src="$newcolumn2" id="image2">
+				<a href = "$newcolumn2" id='image2' target="_blank">
 			</div>
 		IMAGES;
 		
@@ -245,6 +259,14 @@
 				</p>
 			</div>
 		FOOTER;
+	}
+	function incrementLoc ($location) {
+		$location += 1;
+		return $location;
+	}
+	function decrementLoc ($location) {
+		$location -= 1;
+		return $location;
 	}
 	?>
  </body>

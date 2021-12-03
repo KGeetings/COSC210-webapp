@@ -90,37 +90,37 @@
 		// adding previous and next buttons to navigate through the locations
 		if ($loc <= 1){
 			$tempinc = incrementLoc($loc);
-			echo "<form action='' method='POST'>\n";
-			echo "<input type='submit' value='Next' name='Next'>\n";
-			echo "<input type='hidden' value='$bldg' name='building'>\n";
-			echo "<input type='hidden' value='$tempinc' name='location'>\n";
+			echo "<form action='' method='POST'>";
+			echo "<input type='submit' value='Next' name='Next'>";
+			echo "<input type='hidden' value='$bldg' name='building'>";
+			echo "<input type='hidden' value='$tempinc' name='location'>";
 			echo "<input type='hidden' value='$rows_location' name='rows_location'>";
-			echo "</form>\n";
+			echo "</form>";
 		}
 		else if ($loc >= $rows_location) {
 			$tempdec = decrementLoc($loc);
-			echo "<form action='' method='POST'>\n";
-			echo "<input type='submit' value='Previous' name='Previous'>\n";
-			echo "<input type='hidden' value='$bldg' name='building'>\n";
-			echo "<input type='hidden' value='$tempdec' name='location'>\n";
+			echo "<form action='' method='POST'>";
+			echo "<input type='submit' value='Previous' name='Previous'>";
+			echo "<input type='hidden' value='$bldg' name='building'>";
+			echo "<input type='hidden' value='$tempdec' name='location'>";
 			echo "<input type='hidden' value='$rows_location' name='rows_location'>";
 			echo "</form>\n";
 		}
 		else {
 			$tempinc = incrementLoc($loc);
 			$tempdec = decrementLoc($loc);
-			echo "<form action='' method='POST'>\n";
-			echo "<input type='submit' value='Previous' name='Previous'>\n";
-			echo "<input type='hidden' value='$bldg' name='building'>\n";
-			echo "<input type='hidden' value='$tempdec' name='location'>\n";
+			echo "<form action='' method='POST'>";
+			echo "<input type='submit' value='Previous' name='Previous'>";
+			echo "<input type='hidden' value='$bldg' name='building'>";
+			echo "<input type='hidden' value='$tempdec' name='location'>";
 			echo "<input type='hidden' value='$rows_location' name='rows_location'>";
-			echo "</form>\n";
-			echo "<form action='' method='POST'>\n";
-			echo "<input type='submit' value='Next' name='Next'>\n";
-			echo "<input type='hidden' value='$bldg' name='building'>\n";
-			echo "<input type='hidden' value='$tempinc' name='location'>\n";
+			echo "</form>";
+			echo "<form action='' method='POST'>";
+			echo "<input type='submit' value='Next' name='Next'>";
+			echo "<input type='hidden' value='$bldg' name='building'>";
+			echo "<input type='hidden' value='$tempinc' name='location'>";
 			echo "<input type='hidden' value='$rows_location' name='rows_location'>";
-			echo "</form>\n";
+			echo "</form>";
 		}
 		echo "</h2>\n";
 		
